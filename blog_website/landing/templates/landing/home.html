@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Landing Page</title>
+</head>
+<body>
+    <h2>Welcome to the Blog Website</h2>
+    <ul>
+        {% for blog in blogs %}
+            <li><a href="{% url 'blog_detail' blog.id %}">{{ blog.title }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
