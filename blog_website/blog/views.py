@@ -22,7 +22,7 @@ def blog_create(request):
             return redirect('blog_detail', pk=blog.pk)
     else:
         form = BlogForm()
-    return render(request, 'blog/blog_form.html', {'form': form, 'form_title': 'Create Blog', 'button_text': 'Create'})
+    return render(request, 'blog/blog_form.html', {'form': form, 'form_title': 'Create Blog',  'button_text': 'Create'})
 
 @login_required
 def blog_update(request, pk):

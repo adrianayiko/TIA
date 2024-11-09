@@ -8,6 +8,10 @@
     <ul>
         {% for blog in blogs %}
             <li><a href="{% url 'blog_detail' blog.id %}">{{ blog.title }}</a></li>
+            <p>{{ blog.content }}</p>
+            <p>Author: {{ blog.author.username }}</p>
+            <p>Created at: {{ blog.created_at }}</p>
+            <img src="{{ blog.image.url }}" alt="Image" style="width: 200px; height: 200px;">
         {% endfor %}
     </ul>
 </body>
