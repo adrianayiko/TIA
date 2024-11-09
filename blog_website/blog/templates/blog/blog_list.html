@@ -1,3 +1,5 @@
+{% load static %}
+{% static "images" as baseUrl %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +9,13 @@
     <h2>Blog List</h2>
     <ul>
         {% for blog in blogs %}
-            <li><a href="{% url 'blog_detail' blog.id %}">{{ blog.title }}</a></li>
+            <li>
+                <a href="{% url 'blog_detail' blog.id %}">{{ blog.title }}</a>
+                {% if blog.image %}
+                    <img src="{{ baseUrl}}/{{blog.image}}" alt="{{ blog.title }}" style="max-width: 200px;">
+                {% endif %}
+            </li>
+
         {% endfor %}
     </ul>
     <a href="{% url 'blog_create' %}">Create New Blog</a>

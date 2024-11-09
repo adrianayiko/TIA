@@ -7,11 +7,14 @@
     <h2>Welcome to the Blog Website</h2>
     <ul>
         {% for blog in blogs %}
-            <li><a href="{% url 'blog_detail' blog.id %}">{{ blog.title }}</a></li>
-            <p>{{ blog.content }}</p>
-            <p>Author: {{ blog.author.username }}</p>
-            <p>Created at: {{ blog.created_at }}</p>
-            <img src="{{ blog.image.url }}" alt="Image" style="width: 200px; height: 200px;">
+            <li>
+                <a href="{% url 'blog_detail' blog.id %}">{{ blog.title }}</a>
+                {% if blog.image %}
+                    <img src="{{ blog.image.url }}" alt="{{ blog.title }}" style="max-width: 200px;">
+                {% else %}
+                    <p>No image available</p>
+                {% endif %}
+            </li>
         {% endfor %}
     </ul>
 </body>
