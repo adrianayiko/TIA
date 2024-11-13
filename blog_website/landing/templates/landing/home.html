@@ -9,11 +9,14 @@
         {% for blog in blogs %}
             <li>
                 <a href="{% url 'blog_detail' blog.id %}">{{ blog.title }}</a>
+                <p>
                 {% if blog.image %}
                     <img src="{{ blog.image.url }}" alt="{{ blog.title }}" style="max-width: 200px;">
                 {% else %}
                     <p>No image available</p>
                 {% endif %}
+                </p>
+                <p>{{ blog.caption}}
             </li>
         {% endfor %}
     </ul>

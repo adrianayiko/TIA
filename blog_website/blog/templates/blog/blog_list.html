@@ -10,10 +10,15 @@
     <ul>
         {% for blog in blogs %}
             <li>
+                
                 <a href="{% url 'blog_detail' blog.id %}">{{ blog.title }}</a>
+                <p>
                 {% if blog.image %}
-                    <img src="{{ baseUrl}}/{{blog.image}}" alt="{{ blog.title }}" style="max-width: 200px;">
+                <img src="{{ blog.image.url }}" alt="{{ blog.title }}" style="max-width: 200px;">    
+                {% comment %} <img src="{{ baseUrl}}/{{blog.image}}" alt="{{ blog.title }}" style="max-width: 200px;"> {% endcomment %}
                 {% endif %}
+                </p>
+                <p>{{ blog.caption}}</p>
             </li>
 
         {% endfor %}
