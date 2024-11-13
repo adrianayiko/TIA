@@ -28,7 +28,7 @@ def blog_create(request):
 def blog_update(request, pk):
     blog = get_object_or_404(Blog, pk=pk)
     if request.method == 'POST':
-        form = BlogForm(request.POST, instance=blog)
+        form = BlogForm(request.POST, request.FILES, instance=blog,)
         if form.is_valid():
             form.save()
             return redirect('blog_detail', pk=blog.pk)
