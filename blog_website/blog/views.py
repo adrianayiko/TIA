@@ -43,3 +43,4 @@ def blog_delete(request, pk):
         blog.delete()
         return redirect('blog_list')
     return render(request, 'blog/blog_confirm_delete.html', {'blog': blog})
+
