@@ -7,6 +7,7 @@ def blog_list(request):
     blogs = Blog.objects.all()
     return render(request, 'blog/blog_list.html', {'blogs': blogs})
 
+@login_required
 def blog_detail(request, pk):
     blog = get_object_or_404(Blog, pk=pk)
     return render(request, 'blog/blog_detail.html', {'blog': blog})
@@ -43,4 +44,5 @@ def blog_delete(request, pk):
         blog.delete()
         return redirect('blog_list')
     return render(request, 'blog/blog_confirm_delete.html', {'blog': blog})
+
 

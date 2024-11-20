@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Landing Page</title>
-</head>
-<body>
-    <h2>Welcome to the Blog Website</h2>
-    <ul>
+{% extends 'landing/base.html' %}
+{% block title %}Landing Page{% endblock %}
+{% block content %}
+    <h2 style="text-align: center;">Welcome to the Blog Website</h2>
+    <div class="blog-container">
         {% for blog in blogs %}
-            <li>
-                <a href="{% url 'blog_detail' blog.id %}">{{ blog.title }}</a>
+            <div class="blog-item">
+                <a href="{% url 'blog:blog_detail' blog.id %}">{{ blog.title }}</a>
                 <p>
                 {% if blog.image %}
                     <img src="{{ blog.image.url }}" alt="{{ blog.title }}" style="max-width: 200px;">
@@ -16,9 +13,8 @@
                     <p>No image available</p>
                 {% endif %}
                 </p>
-                <p>{{ blog.caption}}
-            </li>
+                <p>{{ blog.caption }}</p>
+            </div>
         {% endfor %}
-    </ul>
-</body>
-</html>
+    </div>
+{% endblock %}

@@ -1,28 +1,21 @@
-{% load static %}
-{% static "images" as baseUrl %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Blog List</title>
-</head>
-<body>
+{% extends 'blog/Base.html' %}
+{% block title %}Blog List{% endblock %}
+{% block content %}
     <h2>Blog List</h2>
-    <ul>
+    <div class="blog-container">
         {% for blog in blogs %}
-            <li>
-                
-                <a href="{% url 'blog_detail' blog.id %}">{{ blog.title }}</a>
+            <div class="blog-item">
+                <a href="{% url 'blog:blog_detail' blog.id %}">{{ blog.title }}</a>
                 <p>
                 {% if blog.image %}
-                <img src="{{ blog.image.url }}" alt="{{ blog.title }}" style="max-width: 200px;">    
-                {% comment %} <img src="{{ baseUrl}}/{{blog.image}}" alt="{{ blog.title }}" style="max-width: 200px;"> {% endcomment %}
+                    <img src="{{ blog.image.url }}" alt="{{ blog.title }}" style="max-width: 200px;">
+                {% else %}
+                    <p>No image available</p>
                 {% endif %}
                 </p>
-                <p>{{ blog.caption}}</p>
-            </li>
-
+                <p>{{ blog.caption }}</p>
+            </div>
         {% endfor %}
-    </ul>
-    <a href="{% url 'blog_create' %}">Create New Blog</a>
-</body>
-</html>
+    </div>
+    <a href="{% url 'blog:blog_create' %}">Create New Blog</a>
+{% endblock %}

@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Create/Update Blog</title>
-</head>
-<body>
+{% extends 'blog/Base.html' %}
+{% block title %}{{ form_title }}{% endblock %}
+{% block content %}
     <h2>{{ form_title }}</h2>
     <form method="post" enctype ="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">{{ button_text }}</button>
     </form>
-    <a href="{% url 'blog_list' %}">Back to Blog List</a>
-</body>
-</html>
+    <a href="{% url 'blog:blog_list' %}">Back to Blog List</a>
+{% endblock %}
