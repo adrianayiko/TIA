@@ -9,7 +9,10 @@ def blog_list(request):
 
 @login_required
 def blog_detail(request, pk):
-    blog = get_object_or_404(Blog, pk=pk)
+    try:
+        blog = Blog.objects.get(pk=pk)
+    except Blog.DoesNotExist:
+        return render(request, '404.html')
     return render(request, 'blog/blog_detail.html', {'blog': blog})
 
 @login_required

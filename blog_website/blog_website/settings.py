@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'rest_framework',
+    'drf_yasg',
     'rest_framework.authtoken',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -152,6 +153,8 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ],
     # 'DEFAULT_PERMISSION_CLASSES': [
-    #     'rest_framework.permissions.IsAuthenticated',
-    
+    #     'rest_framework.permissions.IsAuthenticated',   
 }
+# settings.py
+LOGIN_URL = '/users/login/'
+
