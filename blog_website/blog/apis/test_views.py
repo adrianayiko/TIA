@@ -12,7 +12,7 @@ from rest_framework.authtoken.models import Token
 class BlogListTests(APITestCase):
     def setUp(self):
         self.client = APIClient()
-        self.url = reverse('bloglist')
+        self.url = reverse('blog:blog_list')
         self.user = User.objects.create_user(username='testuser', password='testpassword')
         self.token = Token.objects.create(user=self.user)
         self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.token.key)
@@ -36,7 +36,7 @@ class BlogDetailTests(APITestCase):
     def setUp(self):
         self.client = APIClient()
         self.blog = Blog.objects.create(title='Test Blog', content='Test Content')
-        self.url = reverse('blogdetail', kwargs={'pk': self.blog.pk})
+        self.url = reverse('blog:blog_detail', kwargs={'pk': self.blog.pk})
         self.user = User.objects.create_user(username='testuser', password='testpassword')
         self.token = Token.objects.create(user=self.user)
         self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.token.key)
@@ -62,7 +62,7 @@ class BlogDetailTests(APITestCase):
 class LogoutTests(APITestCase):
     def setUp(self):
         self.client = APIClient()
-        self.url = reverse('logout')
+        self.url = reverse('users:logout_view')
         self.user = User.objects.create_user(username='testuser', password='testpassword')
         self.token = Token.objects.create(user=self.user)
         self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.token.key)
