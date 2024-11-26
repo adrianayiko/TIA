@@ -1,0 +1,60 @@
+<!-- landing/templates/landing/api_documentation.html -->
+{% extends 'landing/base.html' %}
+
+{% block title %}API Documentation{% endblock %}
+{% block content %}
+    <h2>API Documentation</h2>
+    
+    <h3>1. Blog List API</h3>
+    <p><strong>Endpoint:</strong> <code>/blog/apis/</code></p>
+    <p><strong>Method:</strong> GET</p>
+    <p><strong>Description:</strong> Retrieves a list of all blog posts.</p>
+    <p><strong>Response:</strong> A JSON array of blog post objects.</p>
+
+    <h3>2. Blog Detail API</h3>
+    <p><strong>Endpoint:</strong> <code>/blog/apis/&lt;int:pk&gt;/</code></p>
+    <p><strong>Method:</strong> GET, PUT, DELETE</p>
+    <p><strong>Description:</strong> 
+        <ul>
+            <li>GET: Retrieves a single blog post by ID.</li>
+            <li>PUT: Updates a single blog post by ID.</li>
+            <li>DELETE: Deletes a single blog post by ID.</li>
+        </ul>
+    </p>
+
+    <h3>3. Login API</h3>
+    <p><strong>Endpoint:</strong> <code>/login/</code></p>
+    <p><strong>Method:</strong> POST</p>
+    <p><strong>Description:</strong> Authenticates a user and returns an authentication token.</p>
+
+    <h3>4. Logout API</h3>
+    <p><strong>Endpoint:</strong> <code>/logout/</code></p>
+    <p><strong>Method:</strong> POST</p>
+    <p><strong>Description:</strong> Invalidates the authentication token and logs out the user.</p>
+
+    <h3>Authentication</h3>
+    <p>The APIs use token-based authentication. To authenticate, send a POST request to the <code>/login/</code> endpoint with a JSON object containing <code>username</code> and <code>password</code> fields.</p>
+
+    <h3>Error Handling</h3>
+    <p>The APIs return standard HTTP error codes for errors.</p>
+
+    <h3>Example Requests</h3>
+    <pre>
+        <code>
+        # Get Blog List
+        curl -X GET http://localhost:8000/blog/apis/ -H 'Authorization: Token <authentication_token>'
+
+        # Get Blog Detail
+        curl -X GET http://localhost:8000/blog/apis/1/ -H 'Authorization: Token <authentication_token>'
+
+        # Update Blog Detail
+        curl -X PUT http://localhost:8000/blog/apis/1/ -H 'Authorization: Token <authentication_token>' -H 'Content-Type: application/json' -d '{"title": "Updated Title", "content": "Updated Content"}'
+
+        # Login
+        curl -X POST http://localhost:8000/login/ -H 'Content-Type: application/json' -d '{"username": "testuser", "password": "testpassword"}'
+
+        # Logout
+        curl -X POST http://localhost:8000/logout/ -H 'Authorization: Token <authentication_token>'
+        </code>
+    </pre>
+{% endblock %}
