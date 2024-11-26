@@ -9,7 +9,7 @@ venv/
 
 # Django database
 db.sqlite3
-
+.pytest_cache
 # Media and static files
 /media/
 staticfiles/
